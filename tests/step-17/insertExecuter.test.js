@@ -1,4 +1,4 @@
-const { executeINSERTQuery } = require('../../src/index');
+const { executeINSERTQuery } = require('../../src/queryExecutor');
 const { readCSV, writeCSV } = require('../../src/csvReader');
 const fs = require('fs');
 
@@ -9,6 +9,7 @@ async function createGradesCSV() {
         { student_id: '2', course: 'Chemistry', grade: 'B' },
         { student_id: '3', course: 'Mathematics', grade: 'C' }
     ];
+    fs.writeFileSync('grades.csv', '');
     await writeCSV('grades.csv', initialData);
 }
 
