@@ -23,8 +23,8 @@ test(
     orderByFields: null,
     hasAggregateWithoutGroupBy: false,
     joinCondition: null,
-    joinTable: null,
     joinType: null,
+    joinTable: null,
     limit: null,
     isDistinct: false,
   });
