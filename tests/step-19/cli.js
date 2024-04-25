@@ -1,7 +1,8 @@
-const child_process = require('child_process');
-const path = require('path');
+const child_process = require("child_process");
+const path = require("path");
 
-test('DISTINCT with Multiple Columns via CLI', (done) => {
+test(
+    "DISTINCT with Multiple Columns via CLI", (done) => {
     const cliPath = path.join(__dirname, '..', 'src', 'cli.js');
     const cliProcess = child_process.spawn('node', [cliPath]);
 
@@ -39,7 +40,6 @@ test('DISTINCT with Multiple Columns via CLI', (done) => {
           done()
           throw new Error('Failed to parse CLI output');
         }
-
         done();
     });
 

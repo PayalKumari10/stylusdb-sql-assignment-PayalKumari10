@@ -1,5 +1,5 @@
-const { executeDELETEQuery } = require('../../src/queryExecutor');
-const { readCSV, writeCSV } = require('../../src/csvReader');
+const { executeDELETEQuery } = require("../../src/queryExecutor");
+const { readCSV, writeCSV } = require("../../src/csvReader");
 const fs = require('fs');
 
 // Helper function to create courses.csv with initial data
@@ -13,7 +13,8 @@ async function createCoursesCSV() {
 }
 
 // Test to DELETE a course and verify
-test('Execute DELETE FROM Query for courses.csv', async () => {
+test(
+    "Execute DELETE FROM Query for courses.csv", async () => {
     // Create courses.csv with initial data
     await createCoursesCSV();
 
