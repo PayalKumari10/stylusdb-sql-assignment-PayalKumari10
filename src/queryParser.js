@@ -1,6 +1,5 @@
 function parseSelectQuery(query) {
     try {
-
         // Trim the query to remove any leading/trailing whitespaces
         query = query.trim();
 
@@ -95,7 +94,6 @@ function checkAggregateWithoutGroupBy(query, groupByFields) {
     const aggregateFunctionRegex = /(\bCOUNT\b|\bAVG\b|\bSUM\b|\bMIN\b|\bMAX\b)\s*\(\s*(\*|\w+)\s*\)/i;
     return aggregateFunctionRegex.test(query) && !groupByFields;
 }
-
 
 function parseJoinClause(query) {
     const joinRegex = /\s(INNER|LEFT|RIGHT) JOIN\s(.+?)\sON\s([\w.]+)\s*=\s*([\w.]+)/i;

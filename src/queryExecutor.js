@@ -3,8 +3,6 @@ const { parseSelectQuery,parseInsertQuery, parseDeleteQuery } = require('./query
 const { readCSV, writeCSV }= require('./csvReader');
 
 
-
-
 // Helper functions for different JOIN types
 function performInnerJoin(data, joinData, joinCondition, fields, table) {
     return data.flatMap(mainRow => {

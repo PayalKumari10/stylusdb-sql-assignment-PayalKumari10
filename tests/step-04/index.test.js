@@ -3,7 +3,8 @@ const { parseSelectQuery, parseJoinClause } = require("../../src/queryParser");
 const { executeSELECTQuery } = require("../../src/queryExecutor");
 
 
-test("Read CSV File", async () => {
+test(
+    "Read CSV File", async () => {
     const data = await readCSV("./student.csv");
     expect(data.length).toBeGreaterThan(0);
     expect(data.length).toBe(4);
@@ -11,7 +12,8 @@ test("Read CSV File", async () => {
     expect(data[0].age).toBe("30"); //ignore the string type here, we will fix this later
 });
 
-    test("Parse SQL Query", () => {
+    test(
+        "Parse SQL Query", () => {
         const query = "SELECT id, name FROM student";
         const parsed = parseSelectQuery(query);
         expect(parsed).toEqual({
@@ -29,7 +31,8 @@ test("Read CSV File", async () => {
         });
     });
 
-    test("Execute SELECT Query", async () => {
+    test(
+        "Execute SELECT Query", async () => {
           const query = "SELECT id, name FROM student";
         const result = await executeSELECTQuery(query);
         expect(result.length).toBeGreaterThan(0);

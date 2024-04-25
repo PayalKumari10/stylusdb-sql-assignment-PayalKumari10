@@ -2,7 +2,8 @@ const { readCSV } = require("../../src/csvReader");
 const { parseSelectQuery, parseJoinClause } = require("../../src/queryParser");
 const { executeSELECTQuery } = require("../../src/queryExecutor");
 
-test("Read CSV File", async () => {
+test(
+  "Read CSV File", async () => {
   const data = await readCSV("./student.csv");
   expect(data.length).toBeGreaterThan(0);
   expect(data.length).toBe(4);
@@ -10,7 +11,8 @@ test("Read CSV File", async () => {
   expect(data[0].age).toBe("30"); //ignore the string type here, we will fix this later
 });
 
-test("Parse SQL Query", () => {
+test(
+  "Parse SQL Query", () => {
   const query = "SELECT id, name FROM student";
   const parsed = parseSelectQuery(query);
   expect(parsed).toEqual({
@@ -28,7 +30,8 @@ test("Parse SQL Query", () => {
   });
 });
 
-test("Execute SQL Query", async () => {
+test(
+  "Execute SQL Query", async () => {
   const query = "SELECT id, name FROM student";
   const result = await executeSELECTQuery(query);
   expect(result.length).toBeGreaterThan(0);
@@ -38,7 +41,8 @@ test("Execute SQL Query", async () => {
   expect(result[0]).toEqual({ id: "1", name: "John" });
 });
 
-test("Parse SQL Query with WHERE Clause", () => {
+test(
+  "Parse SQL Query with WHERE Clause", () => {
   const query = "SELECT id, name FROM student WHERE age = 25";
   const parsed = parseSelectQuery(query);
   expect(parsed).toEqual({
@@ -62,7 +66,8 @@ test("Parse SQL Query with WHERE Clause", () => {
   });
 });
 
-test("Execute SQL Query with WHERE Clause", async () => {
+test(
+  "Execute SQL Query with WHERE Clause", async () => {
   const query = "SELECT id, name FROM student WHERE age = 25";
   const result = await executeSELECTQuery(query);
   expect(result.length).toBe(1);
@@ -71,7 +76,8 @@ test("Execute SQL Query with WHERE Clause", async () => {
   expect(result[0].id).toBe("2");
 });
 
-test("Parse SQL Query with Multiple WHERE Clauses", () => {
+test(
+  "Parse SQL Query with Multiple WHERE Clauses", () => {
   const query = "SELECT id, name FROM student WHERE age = 30 AND name = John";
   const parsed = parseSelectQuery(query);
   expect(parsed).toEqual({
@@ -100,14 +106,16 @@ test("Parse SQL Query with Multiple WHERE Clauses", () => {
   });
 });
 
-test("Execute SQL Query with Multiple WHERE Clause", async () => {
+test(
+  "Execute SQL Query with Multiple WHERE Clause", async () => {
   const query = "SELECT id, name FROM student WHERE age = 30 AND name = John";
   const result = await executeSELECTQuery(query);
   expect(result.length).toBe(1);
   expect(result[0]).toEqual({ id: "1", name: "John" });
 });
 
-test("Invalid Where Clause", async () => {
+test(
+  "Invalid Where Clause", async () => {
   const query = "SELECT id, name FROM student WHERE age  30 AND name = John";
   expect(() => {
     parseSelectQuery(query);

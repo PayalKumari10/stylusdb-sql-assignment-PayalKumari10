@@ -1,4 +1,3 @@
-
 const fs = require("fs");
 const csv = require("csv-parser");
 const { parse } = require("json2csv");
@@ -19,6 +18,7 @@ async function readCSV(filePath) {
             });
     });
 }
+
 async function writeCSV(filename, data) {
     try {
         const csvData = parse(data);
