@@ -5,6 +5,7 @@ const { executeSELECTQuery } = require("../../src/queryExecutor");
 test(
   "Read CSV File", async () => {
   const data = await readCSV("./student.csv");
+
   expect(data.length).toBeGreaterThan(0);
   expect(data.length).toBe(4);
   expect(data[0].name).toBe("John");
@@ -15,6 +16,7 @@ test(
   "Execute SQL Query", async () => {
   const query = "SELECT id, name FROM student";
   const result = await executeSELECTQuery(query);
+  
   expect(result.length).toBeGreaterThan(0);
   expect(result[0]).toHaveProperty("id");
   expect(result[0]).toHaveProperty("name");
@@ -925,6 +927,7 @@ test(
   "DISTINCT with ORDER BY and LIMIT", async () => {
   const query = "SELECT DISTINCT age FROM student ORDER BY age DESC LIMIT 2";
   const result = await executeSELECTQuery(query);
+
   // Expecting the two highest unique ages
   expect(result).toEqual([{ age: "30" }, { age: "25" }]);
 });
