@@ -6,6 +6,7 @@ const { executeSELECTQuery } = require("../../src/queryExecutor");
 test(
     "Read CSV File", async () => {
     const data = await readCSV("./student.csv");
+    
     expect(data.length).toBeGreaterThan(0);
     expect(data.length).toBe(4);
     expect(data[0].name).toBe("John");
@@ -16,6 +17,7 @@ test(
         "Parse SQL Query", () => {
         const query = "SELECT id, name FROM student";
         const parsed = parseSelectQuery(query);
+
         expect(parsed).toEqual({
             fields: ["id", "name"],
             table: "student",
