@@ -15,6 +15,7 @@ async function createCoursesCSV() {
 // Test to DELETE a course and verify
 test(
     "Execute DELETE FROM Query for courses.csv", async () => {
+        
     // Create courses.csv with initial data
     await createCoursesCSV();
 
@@ -25,6 +26,7 @@ test(
     // Verify the course was removed
     const updatedData = await readCSV('courses.csv');
     const deletedCourse = updatedData.find(course => course.course_id === '2');
+
     expect(deletedCourse).toBeUndefined();
 
     // Cleanup: Delete courses.csv

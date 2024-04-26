@@ -3,6 +3,7 @@ const path = require("path");
 
 test(
     "DISTINCT with Multiple Columns via CLI", (done) => {
+        
     const cliPath = path.join(__dirname, '..', 'src', 'cli.js');
     const cliProcess = child_process.spawn('node', [cliPath]);
 
@@ -12,6 +13,7 @@ test(
     });
 
     cliProcess.on('exit', () => {
+
         // Define a regex pattern to extract the JSON result
         const cleanedOutput = outputData.replace(/\s+/g, ' ');
 
