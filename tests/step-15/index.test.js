@@ -5,6 +5,7 @@ const {executeSELECTQuery} = require("../../src/queryExecutor");
 test(
     "Read CSV File", async () => {
     const data = await readCSV("./student.csv");
+
     expect(data.length).toBeGreaterThan(0);
     expect(data.length).toBe(4);
     expect(data[0].name).toBe("John");
@@ -15,6 +16,7 @@ test(
     "Execute SQL Query", async () => {
     const query = "SELECT id, name FROM student";
     const result = await executeSELECTQuery(query);
+
     expect(result.length).toBeGreaterThan(0);
     expect(result[0]).toHaveProperty("id");
     expect(result[0]).toHaveProperty("name");
@@ -26,6 +28,7 @@ test(
     "Execute SQL Query with WHERE Clause", async () => {
     const query = "SELECT id, name FROM student WHERE age = 25";
     const result = await executeSELECTQuery(query);
+
     expect(result.length).toBe(1);
     expect(result[0]).toHaveProperty("id");
     expect(result[0]).toHaveProperty("name");
@@ -36,6 +39,7 @@ test(
     "Execute SQL Query with Complex WHERE Clause", async () => {
     const query = 'SELECT id, name FROM student WHERE age = 30 AND name = John';
     const result = await executeSELECTQuery(query);
+    
     expect(result.length).toBe(1);
     expect(result[0]).toEqual({ id: '1', name: 'John' });
 });
