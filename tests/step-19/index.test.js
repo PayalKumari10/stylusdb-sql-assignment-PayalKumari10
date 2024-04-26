@@ -26,6 +26,7 @@ test(
 
 test(
     "Execute SQL Query with WHERE Clause", async () => {
+
     const query = 'SELECT id, name FROM student WHERE age = 25';
     const result = await executeSELECTQuery(query);
 
@@ -40,6 +41,7 @@ test(
     const query = 'SELECT id, name FROM student WHERE age = 30 AND name = John';
     const result = await executeSELECTQuery(query);
     
+
     expect(result.length).toBe(1);
     expect(result[0]).toEqual({ id: '1', name: 'John' });
 });

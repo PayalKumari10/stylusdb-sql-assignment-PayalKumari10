@@ -22,6 +22,7 @@ test(
     // Execute INSERT statement
     const insertQuery =
      "INSERT INTO grades (student_id, course, grade) VALUES ('4', 'Physics', 'A')";
+     
     await executeINSERTQuery(insertQuery);
 
 
@@ -29,8 +30,8 @@ test(
     const updatedData = await readCSV('grades.csv');
 
     const newEntry = updatedData.find(row => row.student_id === '4' && row.course === 'Physics');
-    
-    console.log(updatedData)
+
+    console.log(updatedData);
     expect(newEntry).toBeDefined();
     expect(newEntry.grade).toEqual('A');
 

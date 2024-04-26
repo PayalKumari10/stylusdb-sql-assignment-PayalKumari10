@@ -3,7 +3,7 @@ const path = require("path");
 
 test(
     "DISTINCT with Multiple Columns via CLI", (done) => {
-        
+
     const cliPath = path.join(__dirname, '..', 'src', 'cli.js');
     const cliProcess = child_process.spawn('node', [cliPath]);
 
@@ -19,6 +19,7 @@ test(
 
         const resultRegex = /Result: (\[.+\])/s;
         const match = cleanedOutput.match(resultRegex);
+        
         // Fix JSON outputput
         match[1] = match[1].replace(/'/g, '"').replace(/(\w+):/g, '"$1":');
 
