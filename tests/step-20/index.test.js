@@ -5,6 +5,7 @@ const { parseJoinClause, parseSelectQuery } = require("../../src/queryParser");
 test(
     "Read CSV File", async () => {
     const data = await readCSV("./student.csv");
+
     expect(data.length).toBeGreaterThan(0);
     expect(data.length).toBe(4);
     expect(data[0].name).toBe('John');
@@ -15,6 +16,7 @@ test(
     "Execute SQL Query", async () => {
     const query = 'SELECT id, name FROM student';
     const result = await executeSELECTQuery(query);
+    
     expect(result.length).toBeGreaterThan(0);
     expect(result[0]).toHaveProperty('id');
     expect(result[0]).toHaveProperty('name');
@@ -877,6 +879,7 @@ test(
 "Execute SQL Query with LIKE Operator and DISTINCT", async () => {
     const query = "SELECT DISTINCT name FROM student WHERE name LIKE '%e%'";
     const result = await executeSELECTQuery(query);
+
     // Expecting unique names containing 'e'
     expect(result).toEqual([{ name: 'Jane' }, { name: 'Alice' }]);
 });
@@ -885,6 +888,7 @@ test(
     "LIKE with ORDER BY and LIMIT", async () => {
     const query = "SELECT name FROM student WHERE name LIKE '%a%' ORDER BY name ASC LIMIT 2";
     const result = await executeSELECTQuery(query);
+
     // Expecting the first two names alphabetically that contain 'a'
     expect(result).toEqual([{ name: 'Alice' }, { name: 'Jane' }]);
 });
