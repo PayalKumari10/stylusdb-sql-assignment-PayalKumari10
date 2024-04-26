@@ -5,6 +5,7 @@ const { parseJoinClause, parseSelectQuery } = require("../../src/queryParser");
 test(
     "Read CSV File", async () => {
     const data = await readCSV("./student.csv");
+    
     expect(data.length).toBeGreaterThan(0);
     expect(data.length).toBe(4);
     expect(data[0].name).toBe("John");
@@ -15,6 +16,7 @@ test(
     "Execute SQL Query", async () => {
     const query = "SELECT id, name FROM student";
     const result = await executeSELECTQuery(query);
+
     expect(result.length).toBeGreaterThan(0);
     expect(result[0]).toHaveProperty("id");
     expect(result[0]).toHaveProperty("name");
@@ -206,6 +208,7 @@ test(
     "Execute MAX Aggregate Query", async () => {
     const query = 'SELECT MAX(age) FROM student';
     const result = await executeSELECTQuery(query);
+
     expect(result).toEqual([{ 'MAX(age)': 30 }]);
 });
 
@@ -751,6 +754,7 @@ test(
 });
 test(
     "Execute SQL Query with ORDER BY and GROUP BY", async () => {
+
     const query = 'SELECT COUNT(id) as count, age FROM student GROUP BY age ORDER BY age DESC';
     const result = await executeSELECTQuery(query);
 
