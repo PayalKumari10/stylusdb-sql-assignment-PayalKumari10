@@ -5,6 +5,7 @@ const { parseJoinClause, parseSelectQuery } = require("../../src/queryParser");
 test(
     "Read CSV File", async () => {
     const data = await readCSV("./student.csv");
+
     expect(data.length).toBeGreaterThan(0);
     expect(data.length).toBe(4);
     expect(data[0].name).toBe("John");
@@ -15,6 +16,7 @@ test(
     "Execute SQL Query", async () => {
     const query = "SELECT id, name FROM student";
     const result = await executeSELECTQuery(query);
+    
     expect(result.length).toBeGreaterThan(0);
     expect(result[0]).toHaveProperty("id");
     expect(result[0]).toHaveProperty("name");
@@ -36,6 +38,7 @@ test(
     "Execute SQL Query with Complex WHERE Clause", async () => {
     const query = "SELECT id, name FROM student WHERE age = 30 AND name = John";
     const result = await executeSELECTQuery(query);
+
     expect(result.length).toBe(1);
     expect(result[0]).toEqual({ id: '1', name: 'John' });
 });
@@ -44,6 +47,7 @@ test(
     "Execute SQL Query with Greater Than", async () => {
     const queryWithGT = 'SELECT id FROM student WHERE age > 22';
     const result = await executeSELECTQuery(queryWithGT);
+
     expect(result.length).toEqual(3);
     expect(result[0]).toHaveProperty('id');
 });
@@ -794,6 +798,7 @@ test(
     "Execute SQL Query with LIMIT and ORDER BY clause", async () => {
     const query = 'SELECT id, name FROM student ORDER BY age DESC LIMIT 2';
     const result = await executeSELECTQuery(query);
+
     expect(result.length).toEqual(2);
     expect(result[0].name).toEqual('John');
     expect(result[1].name).toEqual('Jane');
